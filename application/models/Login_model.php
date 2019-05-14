@@ -8,4 +8,17 @@ class Login_model extends CI_Model{
     return $result;
   }
  
+  public function simpan($data)
+    {
+
+        $this->db->insert("tbl_users", $data);
+
+        // if($query){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+
+    }
+
 }

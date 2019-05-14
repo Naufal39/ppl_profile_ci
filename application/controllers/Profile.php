@@ -13,5 +13,4 @@ class Profile extends CI_Controller{
     $this->load->view('pakar/index_u');
   }
 
-  
 }

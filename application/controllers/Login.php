@@ -60,8 +60,37 @@ class Login extends CI_Controller{
   }
 
   function r_user_b(){
-      $this->load->view('user_b/dashboard_login');
-    $this->load->view('user_b/registrasi');
+     $this->form_validation->set_rules('user_name','User Name','required');
+    $this->form_validation->set_rules('user_password','User Password','required');
+    $this->form_validation->set_rules('user_email','user_email','required');
+    $this->form_validation->set_rules('user_contact','User Contact','required');
+    $this->form_validation->set_rules('user_level','User Level','required');
+
+    if($this->form_validation->run() == TRUE)
+    {
+      $user_name = $this->input->post('user_name',TRUE);
+      $user_password      = md5($this->input->post('user_password',TRUE));
+      $user_email  = $this->input->post('user_email',TRUE);
+      $user_contact  = $this->input->post('user_contact',TRUE);
+      $user_level   = $this->input->post('user_level',TRUE);
+      
+
+      $data = array(
+            'user_name' => $user_name,
+            'user_password'      => $user_password,
+            'user_email'  => $user_email,
+            'user_contact'  => $user_contact,
+            'user_level'    => $user_level,
+      );
+      $this->login_model->simpan($data);
+
+      $this->session->set_flashdata('msg_berhasil','Anda berhasil Daftar');
+      redirect(base_url('login/r_user_b'));
+    }else {
+       $this->load->view('user_b/dashboard_login');
+      $this->load->view('user_b/registrasi');
+    }
+
   }
 
   function auth(){

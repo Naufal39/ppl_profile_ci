@@ -15,17 +15,27 @@
     <form class="well form-horizontal" action=" " method="post"  id="contact_form">
 <fieldset>
 
+<?php form_open('login/r_user_b');?>
 <!-- Form Name -->
 <legend><center><h2><b>Registration Form as User</b></h2></center></legend><br>
+<?php if($this->session->flashdata('msg_berhasil')){ ?>
+                <div class="alert alert-success alert-dismissible" style="width:100%">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
+               </div>
+              <?php } ?>
 
 <!-- Text input-->
+
+<input type="hidden" value="2" name="user_level">
+              
 
 <div class="form-group">
   <label class="col-md-4 control-label">Full Name</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+  <input  name="user_name" placeholder="Full Name" class="form-control"  type="text">
     </div>
   </div>
 </div>
@@ -42,7 +52,7 @@
   </div>
 </div> -->
 
-  <div class="form-group"> 
+  <!-- <div class="form-group"> 
   <label class="col-md-4 control-label">Department / Office</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
@@ -61,11 +71,11 @@
     </select>
   </div>
 </div>
-</div>
+</div> -->
   
 <!-- Text input-->
 
-<div class="form-group">
+<!-- <div class="form-group">
   <label class="col-md-4 control-label">Username</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
@@ -73,7 +83,7 @@
   <input  name="user_name" placeholder="Username" class="form-control"  type="text">
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Text input-->
 
@@ -89,7 +99,7 @@
 
 <!-- Text input-->
 
-<div class="form-group">
+<!-- <div class="form-group">
   <label class="col-md-4 control-label" >Confirm Password</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -97,7 +107,7 @@
   <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Text input-->
        <div class="form-group">
@@ -105,7 +115,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+  <input name="user_email" placeholder="E-Mail Address" class="form-control"  type="text">
     </div>
   </div>
 </div>
@@ -118,7 +128,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="contact_no" placeholder="(+62)" class="form-control" type="text">
+  <input name="user_contact" placeholder="(+62)" class="form-control" type="text">
     </div>
   </div>
 </div>
@@ -137,6 +147,7 @@
 </div>
 
 </fieldset>
+<?php echo form_close();?>
 </form>
 </div>
     </div><!-- /.container -->
